@@ -1,12 +1,13 @@
 package day6
 
 import java.io.File
+import kotlin.time.measureTime
 
 fun main() {
     val inputData = File("out/production/SteveH/day6Input").readLines()
 
-    println("Part 1: ${part1(inputData)}")
-    println("Part 2: ${part2(inputData)}")
+    println(measureTime { println("Part 1: ${part1(inputData)}") }.toString())
+    println(measureTime { println("Part 2: ${part2(inputData)}") }.toString())
 }
 
 val regex = Regex("""\d+""")

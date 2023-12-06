@@ -6,10 +6,8 @@ import kotlin.time.measureTime
 fun main() {
     val inputData = File("out/production/SteveH/day5Input").readLines()
 
-    println(measureTime {  println("Part 1: ${part1(inputData)}")}.toString())
-    println(measureTime {
-        println("Part 2: ${part2(inputData)}")
-    }.toString())
+    println(measureTime { println("Part 1: ${part1(inputData)}") }.toString())
+    println(measureTime { println("Part 2: ${part2(inputData)}") }.toString())
 
 }
 
@@ -58,11 +56,11 @@ fun part2(inputData: List<String>): Long {
     val chunked = splitMappingData(inputData)
     val map = createMapping(chunked)
     val seedNumbers = chunked[0][0].split(' ')
-        .filter { it != "seeds:" }
-        .chunked(2)
-        .map { seeds -> seeds.map { it.toLong() } }.map {
-            it.first()..<it.first() + it.last()
-        }
+            .filter { it != "seeds:" }
+            .chunked(2)
+            .map { seeds -> seeds.map { it.toLong() } }.map {
+                it.first()..<it.first() + it.last()
+            }
     return computeMinimumValue(map, seedNumbers)
 }
 

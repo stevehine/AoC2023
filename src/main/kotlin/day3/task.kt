@@ -2,6 +2,7 @@ package day3
 
 import java.io.File
 import kotlin.properties.Delegates
+import kotlin.time.measureTime
 
 var width by Delegates.notNull<Int>()
 var height by Delegates.notNull<Int>()
@@ -12,8 +13,8 @@ fun main() {
     width = inputData[0].length
     height = inputData.size
 
-    println("Part 1: ${part1(inputData)}")
-    println("Part 2: ${part2(inputData)}")
+    println(measureTime { println("Part 1: ${part1(inputData)}") }.toString())
+    println(measureTime { println("Part 2: ${part2(inputData)}") }.toString())
 }
 
 val partNumberRegex = Regex("""\d+""")
