@@ -36,18 +36,15 @@ fun part1(inputData: List<String>): Int {
 
 
 fun part2(inputData: List<String>): Long {
-    var time: Long = 0
-    var distance: Long = 0
-
-    time = regex.find(inputData[0].replace(" ", ""))!!.value.toLong()
-    distance = regex.find(inputData[1].replace(" ",""))!!.value.toLong()
+    val time = regex.find(inputData[0].replace(" ", ""))!!.value.toLong()
+    val distance = regex.find(inputData[1].replace(" ", ""))!!.value.toLong()
 
 
-        var winningCombos = 0L
-        for (t in 0..time) {
-            if (t * (time - t) > distance)
-                winningCombos += 1
-        }
+    var winningCombos = 0L
+    for (t in 0..time) {
+        if (t * (time - t) > distance)
+            winningCombos += 1
+    }
 
     return winningCombos
 }
