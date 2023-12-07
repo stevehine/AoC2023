@@ -6,10 +6,13 @@ import org.junit.jupiter.api.Test
 
 class templateTest {
     private lateinit var inputData: List<String>
+
     @BeforeEach
-        fun setupTestData() {
-            inputData = ("").split("\n")
-        }
+    fun setupTestData() {
+        inputData = ("").split("\n")
+
+    }
+
     @Test
     fun part1() = assertEquals(-1, part1(inputData))
 
