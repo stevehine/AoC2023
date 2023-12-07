@@ -83,26 +83,25 @@ class Hand() {
         score = when (handGrouping.keys.size) {
             1 -> 7
             2 -> {
-                if (jokers && handGrouping.keys.contains(1)) {
+                if (handGrouping.keys.contains(1))
                     7
-                } else {
+                else
                     if (handGrouping.values.contains(4))
                         6
                     else
                         5
-                }
             }
 
             3 -> {
                 if (handGrouping.values.contains(3)) {
                     // three of a kind
-                    if (jokers && handGrouping.keys.contains(1))
+                    if (handGrouping.keys.contains(1))
                         6
                     else
                         4
                 } else {
                     //two pair
-                    if (jokers && handGrouping.keys.contains(1))
+                    if (handGrouping.keys.contains(1))
                         if (handGrouping[1] == 2)
                             6
                         else
@@ -113,14 +112,14 @@ class Hand() {
             }
 
             4 -> {
-                if (jokers && handGrouping.keys.contains(1)) {
+                if (handGrouping.keys.contains(1))
                     4
-                } else
+                else
                     2
             }
 
             else -> {
-                if (jokers && handGrouping.keys.contains(1))
+                if (handGrouping.keys.contains(1))
                     2
                 else
                     1
