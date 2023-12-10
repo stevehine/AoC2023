@@ -1,5 +1,6 @@
 package day3
 
+import common.Vec2
 import java.io.File
 import kotlin.properties.Delegates
 import kotlin.time.measureTime
@@ -87,13 +88,3 @@ class PartNumber(private val range: IntRange, val y: Int, val num: Int) {
     }
 }
 
-class Vec2(val x: Int, val y: Int) {
-    override fun equals(other: Any?): Boolean = (other is Vec2) && other.x == x && other.y == y
-
-    override fun hashCode(): Int {
-        var result = x
-        result = 31 * result + y
-        return result
-    }
-
-}
