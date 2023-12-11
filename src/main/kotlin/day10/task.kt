@@ -49,7 +49,7 @@ fun part1(inputData: List<String>): Int {
             steps += 1
             val pipe = inputData[location.y][location.x]
             if (!pipeMap[pipe]!!.containsKey(direction)) return@map 0
-            direction = pipeMap[pipe]!![direction]!!
+            pipeMap[pipe]!![direction]!!.also { direction = it }
             location = when (direction) {
                 'n' -> Vec2(location.x, location.y - 1)
                 's' -> Vec2(location.x, location.y + 1)
@@ -94,7 +94,7 @@ fun part2(inputData: List<String>): Int {
             pipeMap[it]!!.keys.contains(direction) && pipeMap[it]!![direction]!! == origin.second
         }
         Pair(route, startPiece)
-    }.sortedByDescending { it.first.size }.first()
+    }.maxByOrNull { it.first.size }!!
 
     val pipe = pipeData.first
     val startPiece = pipeData.second
@@ -110,8 +110,7 @@ fun part2(inputData: List<String>): Int {
                 bigPipe[y * 3 + 1] += "..."
                 bigPipe[y * 3 + 2] += "..."
             } else {
-                val piece: Char
-                piece = when (inputData[y][x]) {
+                val piece: Char = when (inputData[y][x]) {
                     'S' -> startPiece
                     else -> inputData[y][x]
                 }
@@ -176,7 +175,7 @@ fun part2(inputData: List<String>): Int {
         }
     }
 
-    return inputData.indices.map { y ->
+    return inputData.indices.sumOf { y ->
         inputData[0].indices.map { x ->
             if (bigPipe[y * 3].substring(x * 3..x * 3 + 2).contains(' ') ||
                 bigPipe[y * 3 + 1].substring(x * 3..x * 3 + 2).contains(' ') ||
@@ -187,7 +186,7 @@ fun part2(inputData: List<String>): Int {
                 1
 
         }.sum()
-    }.sum()
+    }
 
 }
 
