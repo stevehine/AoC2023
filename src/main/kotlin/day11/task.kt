@@ -3,7 +3,6 @@ package day11
 import common.Vec2
 import java.io.File
 import java.math.BigInteger
-import kotlin.math.exp
 import kotlin.time.measureTime
 
 fun main() {

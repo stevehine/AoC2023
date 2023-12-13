@@ -13,7 +13,7 @@ val pipeMap = mapOf(
     'J' to mapOf('e' to 'n', 's' to 'w'),
     '7' to mapOf('e' to 's', 'n' to 'w'),
     'F' to mapOf('w' to 's', 'n' to 'e'),
-    '.' to emptyMap<Char, Char>()
+    '.' to emptyMap()
 )
 
 fun main() {
@@ -49,7 +49,7 @@ fun part1(inputData: List<String>): Int {
             steps += 1
             val pipe = inputData[location.y][location.x]
             if (!pipeMap[pipe]!!.containsKey(direction)) return@map 0
-            pipeMap[pipe]!![direction]!!.also { direction = it }
+            pipeMap[pipe]!![direction]!!.also { newDirection -> direction = newDirection }
             location = when (direction) {
                 'n' -> Vec2(location.x, location.y - 1)
                 's' -> Vec2(location.x, location.y + 1)
@@ -75,7 +75,7 @@ fun part2(inputData: List<String>): Int {
     ).filter {
         it.first.x >= 0 && it.first.y >= 0 && it.first.x < inputData[0].length && it.first.y < inputData.size
     }.map { origin ->
-        val route = mutableListOf<Vec2>(startLocation)
+        val route = mutableListOf(startLocation)
         var location = origin.first
         var direction = origin.second
         while (location != startLocation) {
