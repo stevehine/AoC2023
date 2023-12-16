@@ -1,6 +1,6 @@
 package common
 
-class Vec2(val x: Int, val y: Int) {
+class Vec2(var x: Int, var y: Int) {
     override fun equals(other: Any?): Boolean = (other is Vec2) && other.x == x && other.y == y
 
     override fun hashCode(): Int {
